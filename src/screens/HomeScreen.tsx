@@ -18,7 +18,9 @@ export const HomeScreen = () => {
                 style={styles.pokebolaBG}
             />
 
-            <View>
+            <View
+                style={{alignItems:'center'}}
+            >
                 <FlatList
                     data={simplePokemonList}
                     keyExtractor={(pokemon) => pokemon.id}
