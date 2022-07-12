@@ -5,6 +5,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces'
 import { FadeInImage } from './FadeInImage';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParams } from '../navigator/Navigator';
 
 const windowWidth = Dimensions.get('window').width
 
@@ -16,7 +18,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
 
     const [bgColor, setBgColor] = useState('grey');
     const isMounted = useRef(true);
-    const navigation = useNavigation();
+    const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     useEffect(() => {
         ImageColors.getColors(pokemon.picture, { fallback: 'grey' })
