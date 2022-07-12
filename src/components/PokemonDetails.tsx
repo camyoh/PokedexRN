@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
 import { PokemonFull } from '../interfaces/pokemonInterfaces';
 
 interface Props {
@@ -8,8 +9,13 @@ interface Props {
 
 export const PokemonDetails = ( {pokemon}: Props ) => {
     return (
-        <View>
-            <Text>{pokemon.name}</Text>
-        </View>
+        <ScrollView
+            style={{
+                ...StyleSheet.absoluteFillObject,
+                backgroundColor: 'red'
+            }}
+        >
+
+        </ScrollView>
     )
 }
