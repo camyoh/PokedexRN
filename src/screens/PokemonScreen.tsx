@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Dimensions, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { RootStackParams } from '../navigator/Navigator'
@@ -49,6 +49,11 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
                     {name.toUpperCase() + '\n'}# {id}
                 </Text>
 
+                <Image 
+                    source={require('../assets/pokebola-blanca.png')}
+                    style={styles.pokeball}
+                />
+
             </View>
 
         </View>
@@ -73,5 +78,11 @@ const styles = StyleSheet.create({
         fontSize: 35,
         alignSelf: 'flex-start',
         left: 20
+    },
+    pokeball: {
+        width: 250,
+        height: 250,
+        bottom: -15,
+        opacity: 0.7
     }
 })
