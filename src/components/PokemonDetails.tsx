@@ -11,6 +11,7 @@ interface Props {
 export const PokemonDetails = ( {pokemon}: Props ) => {
     return (
         <ScrollView
+            showsVerticalScrollIndicator = {false}
             style={{
                 ...StyleSheet.absoluteFillObject,
             }}
@@ -83,6 +84,27 @@ export const PokemonDetails = ( {pokemon}: Props ) => {
                                 key={ability.name}
                             >
                                 { ability.name }
+                            </Text>
+                        ))
+                    }
+                </View>
+            </View>
+
+            <View
+                style={styles.container}
+            >
+                <Text style={styles.title}>Moves</Text>
+                <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+                    {
+                        pokemon.moves.map( ({move}) => (
+                            <Text
+                                style={{
+                                    ...styles.regularText,
+                                    marginRight: 10,
+                                }}
+                                key={move.name}
+                            >
+                                { move.name }
                             </Text>
                         ))
                     }
