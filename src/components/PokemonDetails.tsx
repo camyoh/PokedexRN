@@ -36,6 +36,12 @@ export const PokemonDetails = ( {pokemon}: Props ) => {
                 </View>
             </View>
 
+            <View
+                style={styles.container}
+            >
+                <Text style={styles.title}>Sprites</Text>
+            </View>
+
         </ScrollView>
     )
 }
@@ -47,6 +53,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
+        marginTop: 20,
     },
     regularText: {
         fontSize: 19,
