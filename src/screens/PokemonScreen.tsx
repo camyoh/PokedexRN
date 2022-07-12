@@ -4,6 +4,7 @@ import { Dimensions, StyleSheet, Text, View, TouchableOpacity, Image, ActivityIn
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { FadeInImage } from '../components/FadeInImage'
+import { PokemonDetails } from '../components/PokemonDetails'
 import { usePokemon } from '../hooks/usePokemon'
 import { RootStackParams } from '../navigator/Navigator'
 
@@ -65,12 +66,20 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
 
             </View>
 
-            <View style={styles.loadingIndicator}>
-                <ActivityIndicator 
-                    color={color}
-                    size={50}
-                />
-            </View>
+            {
+                isLoading ?
+                    (
+                        <View style={styles.loadingIndicator}>
+                            <ActivityIndicator
+                                color={color}
+                                size={50}
+                            />
+                        </View>
+                    )
+                    : <PokemonDetails pokemon={pokemon}/>
+            }
+
+            
 
         </View>
     )
