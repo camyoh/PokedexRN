@@ -18,41 +18,38 @@ export const HomeScreen = () => {
                 style={styles.pokebolaBG}
             />
 
-            <FlatList
-                data={simplePokemonList}
-                keyExtractor={(pokemon) => pokemon.id}
-                showsVerticalScrollIndicator={false}
-                numColumns={2}
+            <View>
+                <FlatList
+                    data={simplePokemonList}
+                    keyExtractor={(pokemon) => pokemon.id}
+                    showsVerticalScrollIndicator={false}
+                    numColumns={2}
 
-                ListHeaderComponent={
-                    (<Text style={{
-                        ...styles.title,
-                        ...styles.globalMargin,
-                        top: top + 20,
-                        marginBottom: top + 20,
-                    }}>Pokedex</Text>)
-                }
+                    ListHeaderComponent={
+                        (<Text style={{
+                            ...styles.title,
+                            ...styles.globalMargin,
+                            top: top + 20,
+                            marginBottom: top + 20,
+                        }}>Pokedex</Text>)
+                    }
 
-                renderItem={({ item }) => (<PokemonCard pokemon={item} />)}
+                    renderItem={({ item }) => (<PokemonCard pokemon={item} />)}
 
-                //infinite scroll
-                onEndReached={ loadPokemons }
-                onEndReachedThreshold={0.4}
+                    //infinite scroll
+                    onEndReached={loadPokemons}
+                    onEndReachedThreshold={0.4}
 
-                ListFooterComponent={(
-                    <ActivityIndicator 
-                        style={{height: 100}}
-                        size={20}
-                        color="grey"
-                    />
-                )}
-            />
+                    ListFooterComponent={(
+                        <ActivityIndicator
+                            style={{ height: 100 }}
+                            size={20}
+                            color="grey"
+                        />
+                    )}
+                />
+            </View>
 
-            {/* <Text style={{
-                ...styles.title,
-                ...styles.globalMargin,
-                top: top + 20,
-            }}>Pokedex</Text> */}
         </>
     )
 }
