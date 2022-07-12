@@ -14,12 +14,20 @@ export const usePokemonPaginated = () => {
     }
 
     const mapPokemonList = (pokemonList: Result[]) => {
-        pokemonList.forEach(pokemon => console.log(pokemon.name))
+        //const newPokemonList: SimplePokemon[] = 
+        pokemonList.map(({name, url})=>{
+            const urlParts = url.split('/');
+            console.log(urlParts);
+            
+        });
     }
 
     useEffect(() => {
         loadPokemons();
     }, [])
     
+    return {
+        simplePokemonList,
+    }
     
 }
