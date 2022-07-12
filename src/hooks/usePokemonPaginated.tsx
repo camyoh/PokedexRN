@@ -14,12 +14,15 @@ export const usePokemonPaginated = () => {
     }
 
     const mapPokemonList = (pokemonList: Result[]) => {
-        //const newPokemonList: SimplePokemon[] = 
-        pokemonList.map(({name, url})=>{
+        const newPokemonList: SimplePokemon[] = pokemonList.map(({name, url})=>{
             const urlParts = url.split('/');
-            console.log(urlParts);
-            
+            const id = urlParts[urlParts.length - 2];
+            const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${1}.png`
+
+            return { id, picture, name }
         });
+
+        setSimplePokemonList([...simplePokemonList, ...newPokemonList]);
     }
 
     useEffect(() => {
