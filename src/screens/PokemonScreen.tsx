@@ -5,10 +5,13 @@ import { RootStackParams } from '../navigator/Navigator'
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'>{};
 
-export const PokemonScreen = (props: Props) => {
+export const PokemonScreen = ({navigation, route}: Props) => {
+
+    const {simplePokemon, color} = route.params;
+
     return (
         <View>
-            <Text>PokemonScreen</Text>
+            <Text>{simplePokemon.name} - {color}</Text>
         </View>
     )
 }
