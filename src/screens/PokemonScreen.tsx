@@ -12,6 +12,7 @@ const windowWidth = Dimensions.get('window').width
 export const PokemonScreen = ({ navigation, route }: Props) => {
 
     const { simplePokemon, color } = route.params;
+    const { id, name } = simplePokemon;
     const { top } = useSafeAreaInsets();
     console.log(`width: ${windowWidth}`);
     
@@ -40,6 +41,14 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
                     />
                 </TouchableOpacity>
 
+                <Text
+                    style={{
+                        ...styles.pokemonName,
+                    }}
+                >
+                    {name.toUpperCase() + '\n'}# {id}
+                </Text>
+
             </View>
 
         </View>
@@ -59,4 +68,10 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         left: 10
     },
+    pokemonName: {
+        color: 'white',
+        fontSize: 35,
+        alignSelf: 'flex-start',
+        left: 20
+    }
 })
