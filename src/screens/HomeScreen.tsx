@@ -23,6 +23,16 @@ export const HomeScreen = () => {
                 keyExtractor={(pokemon) => pokemon.id}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
+
+                ListHeaderComponent={
+                    (<Text style={{
+                        ...styles.title,
+                        ...styles.globalMargin,
+                        top: top + 20,
+                        marginBottom: top + 20,
+                    }}>Pokedex</Text>)
+                }
+
                 renderItem={({ item }) => (<PokemonCard pokemon={item} />)}
 
                 //infinite scroll
