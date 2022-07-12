@@ -3,6 +3,7 @@ import React from 'react'
 import { Dimensions, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { FadeInImage } from '../components/FadeInImage'
 import { RootStackParams } from '../navigator/Navigator'
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'> { };
@@ -12,7 +13,7 @@ const windowWidth = Dimensions.get('window').width
 export const PokemonScreen = ({ navigation, route }: Props) => {
 
     const { simplePokemon, color } = route.params;
-    const { id, name } = simplePokemon;
+    const { id, name, picture } = simplePokemon;
     const { top } = useSafeAreaInsets();
     console.log(`width: ${windowWidth}`);
     
@@ -54,6 +55,11 @@ export const PokemonScreen = ({ navigation, route }: Props) => {
                     style={styles.pokeball}
                 />
 
+                <FadeInImage 
+                    uri={picture}
+                    style={styles.pokemonImage}
+                />
+
             </View>
 
         </View>
@@ -84,5 +90,11 @@ const styles = StyleSheet.create({
         height: 250,
         bottom: -15,
         opacity: 0.7
+    },
+    pokemonImage: {
+        width: 250,
+        height: 250,
+        position: 'absolute',
+        bottom: -15
     }
 })
