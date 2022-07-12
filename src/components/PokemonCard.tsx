@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces'
 import { FadeInImage } from './FadeInImage';
@@ -26,6 +26,11 @@ export const PokemonCard = ({ pokemon }: Props) => {
                     </Text>
                 </View>
 
+                <Image
+                    source={require('../assets/pokebola-blanca.png')}
+                    style={styles.pokebola}
+                />
+
             </View>
         </TouchableOpacity>
     )
@@ -46,5 +51,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         top: 20,
         left: 10,
+    },
+    pokebola: {
+        width: 100,
+        height: 100,
+        position: 'absolute',
+        bottom: -20,
+        right: -20,
+        opacity: 0.5,
     }
 });
