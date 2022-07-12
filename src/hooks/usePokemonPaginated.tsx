@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { pokemonApi } from '../api/pokemonApi';
-import { PokemonPaginatedResponse, SimplePokemon } from '../interfaces/pokemonInterfaces';
+import { PokemonPaginatedResponse, Result, SimplePokemon } from '../interfaces/pokemonInterfaces';
 
 export const usePokemonPaginated = () => {
     
@@ -10,7 +10,11 @@ export const usePokemonPaginated = () => {
     const loadPokemons =async () => {
         const resp = await pokemonApi.get<PokemonPaginatedResponse>(nextPageUrl.current);
         nextPageUrl.current = resp.data.next;
-        
+        mapPokemonList(resp.data.results)
+    }
+
+    const mapPokemonList = (pokemonList: Result[]) => {
+        pokemonList.forEach(pokemon => console.log(pokemon.name))
     }
 
     useEffect(() => {
