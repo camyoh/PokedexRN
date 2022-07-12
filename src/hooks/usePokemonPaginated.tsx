@@ -4,10 +4,12 @@ import { PokemonPaginatedResponse, Result, SimplePokemon } from '../interfaces/p
 
 export const usePokemonPaginated = () => {
     
+    const [isLoading, setIsLoading] = useState(true)
     const [simplePokemonList, setSimplePokemonList] = useState<SimplePokemon[]>([]);
     const nextPageUrl = useRef("https://pokeapi.co/api/v2/pokemon?limit=40");
 
     const loadPokemons =async () => {
+        setIsLoading(true);
         const resp = await pokemonApi.get<PokemonPaginatedResponse>(nextPageUrl.current);
         nextPageUrl.current = resp.data.next;
         mapPokemonList(resp.data.results)
@@ -23,6 +25,7 @@ export const usePokemonPaginated = () => {
         });
 
         setSimplePokemonList([...simplePokemonList, ...newPokemonList]);
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -31,6 +34,7 @@ export const usePokemonPaginated = () => {
     
     return {
         simplePokemonList,
+        isLoading,
     }
     
 }
