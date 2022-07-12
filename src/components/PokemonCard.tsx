@@ -31,6 +31,11 @@ export const PokemonCard = ({ pokemon }: Props) => {
                     style={styles.pokebola}
                 />
 
+                <FadeInImage 
+                    uri={ pokemon.picture }
+                    style={styles.pokemonImage}
+                />
+
             </View>
         </TouchableOpacity>
     )
@@ -49,7 +54,7 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize: 20,
         fontWeight: 'bold',
-        top: 20,
+        top: 10,
         left: 10,
     },
     pokebola: {
@@ -59,5 +64,12 @@ const styles = StyleSheet.create({
         bottom: -20,
         right: -20,
         opacity: 0.5,
+    },
+    pokemonImage: {
+        width: 100,
+        height: 100,
+        position: 'absolute',
+        right: -8,
+        bottom: -5,
     }
 });
