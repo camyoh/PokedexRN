@@ -9,8 +9,6 @@ import { styles } from '../theme/appTheme'
 export const HomeScreen = () => {
     const { top } = useSafeAreaInsets();
     const { simplePokemonList, loadPokemons } = usePokemonPaginated();
-    console.log(simplePokemonList);
-
 
     return (
         <>
@@ -23,6 +21,7 @@ export const HomeScreen = () => {
                 data={simplePokemonList}
                 keyExtractor={(pokemon) => pokemon.id}
                 showsVerticalScrollIndicator={false}
+                numColumns={2}
                 renderItem={({ item }) => (
                     <FadeInImage 
                         uri={item.picture}
