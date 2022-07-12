@@ -12,11 +12,19 @@ interface Props {
 
 export const PokemonCard = ({ pokemon }: Props) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            activeOpacity={0.8}
+        >
             <View style={{
                 ...styles.cardContainer,
                 width: windowWidth * 0.4,
             }}>
+                <View>
+                    <Text style={styles.name}>
+                        {pokemon.name}
+                        {"\n#" + pokemon.id}
+                    </Text>
+                </View>
 
             </View>
         </TouchableOpacity>
@@ -31,5 +39,12 @@ const styles = StyleSheet.create({
         width: 160,
         marginBottom: 25,
         borderRadius: 10,
+    },
+    name: {
+        color:'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+        top: 20,
+        left: 10,
     }
 });
