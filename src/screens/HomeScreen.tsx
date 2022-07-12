@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { ActivityIndicator, Image, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { usePokemonPaginated } from '../hooks/usePokemonPaginated'
@@ -26,6 +26,14 @@ export const HomeScreen = () => {
                 //infinite scroll
                 onEndReached={ loadPokemons }
                 onEndReachedThreshold={0.4}
+
+                ListFooterComponent={(
+                    <ActivityIndicator 
+                        style={{height: 100}}
+                        size={20}
+                        color="grey"
+                    />
+                )}
             />
 
             {/* <Text style={{
