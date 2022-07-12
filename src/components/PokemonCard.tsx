@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ImageColors from 'react-native-image-colors'
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,16 +13,23 @@ interface Props {
 
 export const PokemonCard = ({ pokemon }: Props) => {
 
-    const [bgColor, setBgColor] = useState('grey')
+    const [bgColor, setBgColor] = useState('grey');
+    const isMounted = useRef(true);
 
     useEffect(() => {
         ImageColors.getColors(pokemon.picture, { fallback: 'grey' })
             .then(colors => {
+
+                if (!isMounted) { return; }
+
                 if (colors.platform === 'android') {
                     setBgColor(colors.dominant || 'grey')
                 } else if (colors.platform === 'ios')
                     setBgColor(colors.background || 'grey')
-            })
+            });
+        return () => {
+            isMounted.current = false;
+        }
     }, [])
 
 
