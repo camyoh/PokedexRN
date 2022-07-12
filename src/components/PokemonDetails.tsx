@@ -12,10 +12,43 @@ export const PokemonDetails = ( {pokemon}: Props ) => {
         <ScrollView
             style={{
                 ...StyleSheet.absoluteFillObject,
-                backgroundColor: 'red'
             }}
         >
+            <View style={{
+                ...styles.container,
+                marginTop: 350,
+            }}>
+                <Text style={styles.title}>Types</Text>
+                <View style={{flexDirection: 'row'}}>
+                    {
+                        pokemon.types.map( ({type}) => (
+                            <Text
+                                style={{
+                                    ...styles.regularText,
+                                    marginRight: 10,
+                                }}
+                                key={type.name}
+                            >
+                                { type.name }
+                            </Text>
+                        ))
+                    }
+                </View>
+            </View>
 
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginHorizontal: 20,
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    regularText: {
+        fontSize: 19,
+    }
+});
