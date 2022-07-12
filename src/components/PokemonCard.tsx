@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces'
@@ -11,6 +11,9 @@ interface Props {
 }
 
 export const PokemonCard = ({ pokemon }: Props) => {
+
+    const [bgColor, setBgColor] = useState('grey')
+
     return (
         <TouchableOpacity
             activeOpacity={0.8}
@@ -18,6 +21,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
             <View style={{
                 ...styles.cardContainer,
                 width: windowWidth * 0.4,
+                backgroundColor: bgColor,
             }}>
                 <View>
                     <Text style={styles.name}>
@@ -44,7 +48,6 @@ export const PokemonCard = ({ pokemon }: Props) => {
 const styles = StyleSheet.create({
     cardContainer: {
         marginHorizontal: 10,
-        backgroundColor: "red",
         height: 120,
         width: 160,
         marginBottom: 25,
