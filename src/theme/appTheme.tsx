@@ -5,7 +5,11 @@ export const styles = StyleSheet.create({
         marginHorizontal: 20
     },
     pokebolaBG: {
+        position: "absolute",
         width: 300,
         height: 300,
+        top: -100,
+        right: -100,
+        opacity: 0.2,
     }
 });
